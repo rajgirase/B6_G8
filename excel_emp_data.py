@@ -25,7 +25,7 @@ def generate_emp(num):
 
     return list_emp
 
-print(generate_emp(100))
+# print(generate_emp(100))
 
 
 

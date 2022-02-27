@@ -7,7 +7,7 @@ class EmployeeAbstraction(ABC):
         pass
 
     # @abstractmethod
-    def writedata(self):
+    def write_data(self):
         pass
 
     # @abstractmethod

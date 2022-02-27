@@ -1,10 +1,9 @@
+from openpyxl import Workbook
 from excel_abstraction import EmployeeAbstraction
 from excel_classes import Address, Employee
 from excelfile import get_wb_and_sheet,file_path
 from openpyxl.styles import Alignment
-
-
-
+from excel_emp_data import generate_emp
 
 
 class empimplementation(EmployeeAbstraction):
@@ -27,19 +26,31 @@ class empimplementation(EmployeeAbstraction):
         workbook.save(file_path)
 
         
-    def writedata(self):
-        pass
+    def write_data(self):
+        workbook,sheet = get_wb_and_sheet()
+        # print(workbook,sheet)
+        employee_list = generate_emp(100)
+        r = sheet.max_row + 1
+        for emp in employee_list:
+            sheet.cell(row=r, column=1).value = emp.Empid
+            sheet.cell(row=r, column=2).value = emp.Empname
+            sheet.cell(row=r, column=3).value = emp.Empage
+            sheet.cell(row=r, column=4).value = emp.Empsalary
+            sheet.cell(row=r, column=5).value = emp.Empaddress.pincode
+            sheet.cell(row=r, column=6).value = emp.Empaddress.City
+            sheet.cell(row=r, column=7).value = emp.Empaddress.state 
+            r += 1
+        workbook.save(file_path)
 
-    
+
     def readdata(self):
         pass
-
 
 
 if __name__=="__main__":
     empl=empimplementation()
     # empl.writeheader()
-
+    empl.write_data()
 
 
 
