@@ -11,7 +11,7 @@ class EmployeeAbstraction(ABC):
         pass
 
     # @abstractmethod
-    def readdata(self):
+    def read_data(self):
         pass
 
 

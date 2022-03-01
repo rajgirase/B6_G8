@@ -1,4 +1,4 @@
-class common:
+class Common:
     def __str__(self):
         return f"\n{self.__dict__}"
 
@@ -6,15 +6,15 @@ class common:
         return str(self)
         
 
-class Employee:
+class Employee(Common):
     def __init__(self,eid,ename,eage,esalary,address):
         self.Empid = eid
         self.Empname = ename
         self.Empage = eage
         self.Empsalary = esalary
-        self.Empaddress = address
+        self.Empaddress = []
         
-class Address:
+class Address(Common):
     def __init__(self,pin,city,state):
         self.pincode = pin
         self.City = city

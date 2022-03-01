@@ -43,15 +43,27 @@ class empimplementation(EmployeeAbstraction):
         workbook.save(file_path)
 
 
-    def readdata(self):
-        pass
-
+    def read_data(self):
+        """ Read data from Excel file"""
+        list_of_emps = []
+        workbook, sheet = get_wb_and_sheet()
+        for i in range(3, sheet.max_row+1):
+            empid = sheet.cell(row=i, column=1).value
+            empname = sheet.cell(row=i, column=2).value
+            empage = sheet.cell(row=i, column=3).value
+            empsalary = sheet.cell(row=i, column=4).value
+            adrpin = sheet.cell(row=i, column=5).value
+            adrcity = sheet.cell(row=i, column=6).value
+            adrstate = sheet.cell(row=i, column=7).value
+            emp = Employee(eid=empid, ename=empname, eage=empage, esalary=empsalary, address=Address(pin=adrpin, city=adrcity, state=adrstate))
+            list_of_emps.append(emp)
+        print(list_of_emps)
 
 if __name__=="__main__":
     empl = empimplementation()
     # empl.writeheader()
-    empl.write_data()
-
+    # empl.write_data()
+    empl.read_data()
 
 
 
